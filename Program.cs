@@ -26,13 +26,11 @@
 
                     //NYI
                     //PlayGame(speed, difficulty);
-                    Console.WriteLine("Play");
                 }
                 else if (command == "highscore" || command == "2")
                 {
                     //NYI
                     //PrintHighscore();
-                    Console.WriteLine("Highscore");
                 }
                 else if (command == "quit" || command == "3")
                 {
@@ -56,14 +54,14 @@
         private static string GetUserInput(string prompt)
         {
             Console.Write(prompt);
-            string command = Console.ReadLine();
-            return command;
+            string userInput = Console.ReadLine();
+            return userInput;
         }
 
         private static int ChooseGameSpeed() 
         {
             int speed = -1;
-            string speedChoice;
+            string userInput;
             bool isValidChoice = false;
             
             Console.WriteLine("\nChoose game speed:");
@@ -73,21 +71,21 @@
 
             while (!isValidChoice)
             {
-                speedChoice = GetUserInput("Choice: ");
+                userInput = GetUserInput("Choice: ");
 
-                if (speedChoice == "slow" || speedChoice == "1")
+                if (userInput == "slow" || userInput == "1")
                 {
                     speed = 1;
                     isValidChoice = true;
                     Console.WriteLine("Slow");
                 }
-                else if (speedChoice == "normal" || speedChoice == "2")
+                else if (userInput == "normal" || userInput == "2")
                 {
                     speed = 2;
                     isValidChoice = true;
                     Console.WriteLine("Normal");
                 }
-                else if (speedChoice == "fast" || speedChoice == "3")
+                else if (userInput == "fast" || userInput == "3")
                 {
                     speed = 3;
                     Console.WriteLine("Fast");
@@ -103,7 +101,7 @@
         private static int ChooseGameDifficulty()
         {
             int difficulty = -1;
-            string speedChoice;
+            string userInput;
             bool isValidChoice = false;
 
             Console.WriteLine("\nChoose difficulty:");
@@ -113,21 +111,21 @@
 
             while (!isValidChoice)
             {
-                speedChoice = GetUserInput("Choice: ");
+                userInput = GetUserInput("Choice: ");
 
-                if (speedChoice == "easy" || speedChoice == "1")
+                if (userInput == "easy" || userInput == "1")
                 {
                     difficulty = 1;
                     isValidChoice = true;
                     Console.WriteLine("Easy");
                 }
-                else if (speedChoice == "medium" || speedChoice == "2")
+                else if (userInput == "medium" || userInput == "2")
                 {
                     difficulty = 2;
                     isValidChoice = true;
                     Console.WriteLine("Medium");
                 }
-                else if (speedChoice == "hard" || speedChoice == "3")
+                else if (userInput == "hard" || userInput == "3")
                 {
                     difficulty = 3;
                     Console.WriteLine("Hard");
@@ -135,7 +133,6 @@
                 }
                 else
                     Console.WriteLine("Not a valid choice!");
-            
             }
             return difficulty;
         }
