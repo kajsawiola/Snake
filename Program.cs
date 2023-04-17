@@ -6,6 +6,7 @@
         {
             Console.WriteLine("Hello, World!");
             Console.WriteLine("Hej världen");
+            Console.WriteLine("God kväll");
         }
     }
 }
