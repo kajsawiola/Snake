@@ -11,27 +11,27 @@
         private static void MainMenu()
         {
             bool continueMenu = true;
-            string commandArr;
+            string command;
 
             while (continueMenu)
             {
                 PrintMainMenu();
 
-                commandArr = GetUserInput();
+                command = GetUserInput();
 
-                if (commandArr == "play" || commandArr == "1")
+                if (command == "play" || command == "1")
                 {
                     //NYI
                     //PlayGame();
                     Console.WriteLine("Play");
                 }
-                else if (commandArr == "highscore" || commandArr == "2")
+                else if (command == "highscore" || command == "2")
                 {
                     //NYI
                     //PrintHighscore();
                     Console.WriteLine("Highscore");
                 }
-                else if (commandArr == "quit" || commandArr == "3")
+                else if (command == "quit" || command == "3")
                 {
                     Console.WriteLine("Have a nice day!");
                     continueMenu = false;
@@ -53,8 +53,8 @@
         private static string GetUserInput()
         {
             Console.Write("Command:>");
-            string commandArr = Console.ReadLine();
-            return commandArr;
+            string command = Console.ReadLine();
+            return command;
         }
 
 
