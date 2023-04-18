@@ -53,6 +53,18 @@ namespace SnakeTheGame
             }
             Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
         }
+        public static Level EasyLevel()
+        {
+            return new Level(60, 30);
+        }
+        public static Level MediumLevel()
+        {
+            return new Level(40, 20);
+        }
+        public static Level HardLevel()
+        {
+            return new Level(30, 10);
+        }
     }
    
     internal class Program
@@ -60,8 +72,12 @@ namespace SnakeTheGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake!");
-            Level Level1 = new Level(40, 20); // Skapar en ny level
-            Level1.DrawLevel(); // Ritar ut level
+            Level easy = Level.EasyLevel();
+            easy.DrawLevel();
+            Level medium = Level.MediumLevel();
+            medium.DrawLevel();
+            Level hard = Level.HardLevel();
+            hard.DrawLevel();
             // Spela spelet från nivå 1 här..
             MainMenu();
         }
