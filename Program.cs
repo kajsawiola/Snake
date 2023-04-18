@@ -123,12 +123,56 @@ namespace SnakeTheGame
             Console.WriteLine("2.Highscore");
             Console.WriteLine("3.Quit\n");
         }
+
+        private static void PauseMenu()
+        { bool continueMenu = true;
+        string command;
+            while (continueMenu)
+            {
+                PrintPauseMenu();
+                command = GetUserInput("Menu choice: ");
+
+                if (command == "Play from start" || command == "1")
+                {
+                    MainMenu();
+                    continueMenu = false;
+                }
+
+                else if (command == "Continue game" || command == "2")
+                {
+                    //NYI: fortsätter spelet där man pausade
+                }
+                else if (command == "Quit game" || command == "3")
+                {
+
+                    while (continueMenu)
+                    {
+                        Console.WriteLine("The game is over, do you want to start a new one? ");
+                        command = GetUserInput("Type 'yes' or 'no': ");
+                        
+                            if (command == "yes")
+                            {
+                                MainMenu();
+                                continueMenu = false;
+                            }
+                            else if (command == "no")
+                            {
+                                Console.WriteLine("Have a nice day!");
+                                continueMenu = false;
+                            }
+                            else
+                                Console.WriteLine("Unknown command!");                       
+                    }
+                }
+                else Console.WriteLine("Unknown command!");
+            }
+        }
         private static void PrintPauseMenu()
         {
             Console.WriteLine("\nPause Menu");
-            Console.WriteLine("1.Börja om spelet");
-            Console.WriteLine("2.Fortsätta spelet");
-            Console.WriteLine("3.Avsluta spelet\n");
+            Console.WriteLine("1.Play from start");
+            Console.WriteLine("2.Continue game");
+            Console.WriteLine("3.Quit\n");
         }
 
         private static string GetUserInput(string prompt)
