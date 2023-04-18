@@ -1,11 +1,69 @@
-﻿namespace SnakeTheGame
+﻿using System;
+using System.Collections.Generic;
+namespace SnakeTheGame
 {
+    class Snake
+    {
+        int positionX, positionY, length, direction;
+
+        public Snake(int x, int y, int length, int direction)
+        {
+            this.positionX = x;
+            this.positionY = y;
+            this.length = length;
+            this.direction = direction;
+        }
+
+        public void MoveSnake()
+        {
+
+        }
+        public void AddToSnake(int points)
+        {
+            this.length += points;
+        }
+        public bool DetectCollision()
+        {
+            return false;
+        }
+
+        public void DrawSnake()
+        {
+
+        }
+    }
+    class Level
+    {
+        public int Width { get; }
+        public int Height { get; }
+        public Level(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
+        public void DrawLevel() // Ritar ut level
+        {
+            Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
+
+            for (int i = 0; i < Height; i++) // Ritar mellanslag med | på varsin sida
+            {
+                Console.Write('|');
+                Console.Write(new String(' ', Width));
+                Console.WriteLine('|');
+            }
+            Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
+        }
+    }
+   
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake!");
-            PauseMenu();
+            Level Level1 = new Level(40, 20); // Skapar en ny level
+            Level1.DrawLevel(); // Ritar ut level
+            // Spela spelet från nivå 1 här..
+            MainMenu();
         }
         // Anders kan pusha!
         private static void MainMenu()
@@ -24,8 +82,7 @@
                     int speed = ChooseGameSpeed();
                     int difficulty = ChooseGameDifficulty();
 
-                    //NYI
-                    //PlayGame(speed, difficulty);
+                    PlayGame(speed, difficulty);
                 }
                 else if (command == "highscore" || command == "2")
                 {
@@ -187,5 +244,45 @@
             }
             return difficulty;
         }
+
+        private static void PlayGame(int speed, int difficulty)
+        {   
+            //NYI: Set game speed and difficulty here
+            //NYI: LoadLevel() or InitLevel()
+
+            if (Console.KeyAvailable)
+            {
+                var keyPressed = Console.ReadKey(true);
+
+                if (keyPressed.Key == ConsoleKey.LeftArrow)
+                {
+                    //NYI: keyPressed LeftArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.RightArrow)
+                {
+                    //NYI: keyPressed RightArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.UpArrow)
+                {
+                    //NYI: keyPressed UpArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.DownArrow)
+                {
+                    //NYI: keyPressed DownArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
+                {
+                    //NYI: keyPressed Escape or Spacebar
+                }
+
+
+            }
+            
+        }
+
     }
 }
