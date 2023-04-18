@@ -78,6 +78,13 @@ namespace SnakeTheGame
             Console.WriteLine("2.Highscore");
             Console.WriteLine("3.Quit\n");
         }
+        private static void PrintPauseMenu()
+        {
+            Console.WriteLine("\nPause Menu");
+            Console.WriteLine("1.Börja om spelet");
+            Console.WriteLine("2.Fortsätta spelet");
+            Console.WriteLine("3.Avsluta spelet\n");
+        }
 
         private static string GetUserInput(string prompt)
         {
