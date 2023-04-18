@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 using System.Drawing;
 using System.Runtime.CompilerServices;
 
@@ -275,40 +277,76 @@ namespace SnakeTheGame
 
         private static void PlayGame(int speed, int difficulty)
         {   
+            bool isGameOver = false;
+
+
             //NYI: Set game speed and difficulty here
             //NYI: LoadLevel() or InitLevel()
 
-            if (Console.KeyAvailable)
+            //NYI Start a timer
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            while (!isGameOver)
             {
-                var keyPressed = Console.ReadKey(true);
-
-                if (keyPressed.Key == ConsoleKey.LeftArrow)
+                // Check if 500 milliseconds have passed
+                if (stopwatch.ElapsedMilliseconds >= 500)
                 {
-                    //NYI: keyPressed LeftArrow
+                    Console.WriteLine("500 milliseconds have passed");
+                    //UpdateLevel(); / DrawLevel();
+
+                    stopwatch.Restart();
                 }
 
-                else if (keyPressed.Key == ConsoleKey.RightArrow)
+                if (Console.KeyAvailable)
                 {
-                    //NYI: keyPressed RightArrow
-                }
+                    var keyPressed = Console.ReadKey(true);
 
-                else if (keyPressed.Key == ConsoleKey.UpArrow)
-                {
-                    //NYI: keyPressed UpArrow
-                }
+                    if (keyPressed.Key == ConsoleKey.LeftArrow)
+                    {
+                        //NYI: keyPressed LeftArrow
+                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine("LeftArrow");
+                    }
 
-                else if (keyPressed.Key == ConsoleKey.DownArrow)
-                {
-                    //NYI: keyPressed DownArrow
-                }
+                    else if (keyPressed.Key == ConsoleKey.RightArrow)
+                    {
+                        //NYI: keyPressed RightArrow
+                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine("RightArrow");
+                    }
 
-                else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
-                {
-                    //NYI: keyPressed Escape or Spacebar
+                    else if (keyPressed.Key == ConsoleKey.UpArrow)
+                    {
+                        //NYI: keyPressed UpArrow
+                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine("UpArrow");
+                    }
+
+                    else if (keyPressed.Key == ConsoleKey.DownArrow)
+                    {
+                        //NYI: keyPressed DownArrow
+                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine("DownArrow");
+                    }
+
+                    else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
+                    {
+                        stopwatch.Stop();
+                        //NYI:Paus();
+                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine("Paus");
+                        stopwatch.Restart();
+                    }
+
+
                 }
 
 
             }
+
+
+            
             
         }
 
