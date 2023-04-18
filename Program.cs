@@ -7,7 +7,7 @@
             Console.WriteLine("Welcome to Snake!");
             MainMenu();
         }
-
+        // Anders kan pusha!
         private static void MainMenu()
         {
             bool continueMenu = true;
