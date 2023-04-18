@@ -82,8 +82,7 @@ namespace SnakeTheGame
                     int speed = ChooseGameSpeed();
                     int difficulty = ChooseGameDifficulty();
 
-                    //NYI
-                    //PlayGame(speed, difficulty);
+                    PlayGame(speed, difficulty);
                 }
                 else if (command == "highscore" || command == "2")
                 {
@@ -201,5 +200,45 @@ namespace SnakeTheGame
             }
             return difficulty;
         }
+
+        private static void PlayGame(int speed, int difficulty)
+        {   
+            //NYI: Set game speed and difficulty here
+            //NYI: LoadLevel() or InitLevel()
+
+            if (Console.KeyAvailable)
+            {
+                var keyPressed = Console.ReadKey(true);
+
+                if (keyPressed.Key == ConsoleKey.LeftArrow)
+                {
+                    //NYI: keyPressed LeftArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.RightArrow)
+                {
+                    //NYI: keyPressed RightArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.UpArrow)
+                {
+                    //NYI: keyPressed UpArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.DownArrow)
+                {
+                    //NYI: keyPressed DownArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
+                {
+                    //NYI: keyPressed Escape or Spacebar
+                }
+
+
+            }
+            
+        }
+
     }
 }
