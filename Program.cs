@@ -1,10 +1,38 @@
-﻿namespace SnakeTheGame
+﻿using System;
+using System.Collections.Generic;
+namespace SnakeTheGame
 {
+    class Level
+    {
+        public int Width { get; }
+        public int Height { get; }
+        public Level(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
+        public void DrawLevel() // Ritar ut level
+        {
+            Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
+
+            for (int i = 0; i < Height; i++) // Ritar mellanslag med | på varsin sida
+            {
+                Console.Write('|');
+                Console.Write(new String(' ', Width));
+                Console.WriteLine('|');
+            }
+            Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
+        }
+    }
+   
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake!");
+            Level Level1 = new Level(40, 20); // Skapar en ny level
+            Level1.DrawLevel(); // Ritar ut level
+            // Spela spelet från nivå 1 här..
             MainMenu();
         }
         // Anders kan pusha!
