@@ -2,6 +2,36 @@
 using System.Collections.Generic;
 namespace SnakeTheGame
 {
+    class Snake
+    {
+        int positionX, positionY, length, direction;
+
+        public Snake(int x, int y, int length, int direction)
+        {
+            this.positionX = x;
+            this.positionY = y;
+            this.length = length;
+            this.direction = direction;
+        }
+
+        public void MoveSnake()
+        {
+
+        }
+        public void AddToSnake(int points)
+        {
+            this.length += points;
+        }
+        public bool DetectCollision()
+        {
+            return false;
+        }
+
+        public void DrawSnake()
+        {
+
+        }
+    }
     class Level
     {
         public int Width { get; }
