@@ -65,8 +65,18 @@ namespace SnakeTheGame
             }
             Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
         }
-
-
+        public static Level EasyLevel()
+        {
+            return new Level(60, 30);
+        }
+        public static Level MediumLevel()
+        {
+            return new Level(40, 20);
+        }
+        public static Level HardLevel()
+        {
+            return new Level(30, 10);
+        }
     }
    
     internal class Program
@@ -74,9 +84,12 @@ namespace SnakeTheGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake!");
-            Level Level1 = new Level(40, 20); // Skapar en ny level
-            Level1.DrawLevel(); // Ritar ut level
-            
+            Level easy = Level.EasyLevel();
+            easy.DrawLevel();
+            Level medium = Level.MediumLevel();
+            medium.DrawLevel();
+            Level hard = Level.HardLevel();
+            hard.DrawLevel();
             // Spela spelet från nivå 1 här..
             MainMenu();
         }
@@ -97,8 +110,7 @@ namespace SnakeTheGame
                     int speed = ChooseGameSpeed();
                     int difficulty = ChooseGameDifficulty();
 
-                    //NYI
-                    //PlayGame(speed, difficulty);
+                    PlayGame(speed, difficulty);
                 }
                 else if (command == "highscore" || command == "2")
                 {
@@ -123,12 +135,56 @@ namespace SnakeTheGame
             Console.WriteLine("2.Highscore");
             Console.WriteLine("3.Quit\n");
         }
+
+        private static void PauseMenu()
+        { bool continueMenu = true;
+        string command;
+            while (continueMenu)
+            {
+                PrintPauseMenu();
+                command = GetUserInput("Menu choice: ");
+
+                if (command == "Play from start" || command == "1")
+                {
+                    MainMenu();
+                    continueMenu = false;
+                }
+
+                else if (command == "Continue game" || command == "2")
+                {
+                    //NYI: fortsätter spelet där man pausade
+                }
+                else if (command == "Quit game" || command == "3")
+                {
+
+                    while (continueMenu)
+                    {
+                        Console.WriteLine("The game is over, do you want to start a new one? ");
+                        command = GetUserInput("Type 'yes' or 'no': ");
+                        
+                            if (command == "yes")
+                            {
+                                MainMenu();
+                                continueMenu = false;
+                            }
+                            else if (command == "no")
+                            {
+                                Console.WriteLine("Have a nice day!");
+                                continueMenu = false;
+                            }
+                            else
+                                Console.WriteLine("Unknown command!");                       
+                    }
+                }
+                else Console.WriteLine("Unknown command!");
+            }
+        }
         private static void PrintPauseMenu()
         {
             Console.WriteLine("\nPause Menu");
-            Console.WriteLine("1.Börja om spelet");
-            Console.WriteLine("2.Fortsätta spelet");
-            Console.WriteLine("3.Avsluta spelet\n");
+            Console.WriteLine("1.Play from start");
+            Console.WriteLine("2.Continue game");
+            Console.WriteLine("3.Quit\n");
         }
 
         private static string GetUserInput(string prompt)
@@ -216,5 +272,45 @@ namespace SnakeTheGame
             }
             return difficulty;
         }
+
+        private static void PlayGame(int speed, int difficulty)
+        {   
+            //NYI: Set game speed and difficulty here
+            //NYI: LoadLevel() or InitLevel()
+
+            if (Console.KeyAvailable)
+            {
+                var keyPressed = Console.ReadKey(true);
+
+                if (keyPressed.Key == ConsoleKey.LeftArrow)
+                {
+                    //NYI: keyPressed LeftArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.RightArrow)
+                {
+                    //NYI: keyPressed RightArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.UpArrow)
+                {
+                    //NYI: keyPressed UpArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.DownArrow)
+                {
+                    //NYI: keyPressed DownArrow
+                }
+
+                else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
+                {
+                    //NYI: keyPressed Escape or Spacebar
+                }
+
+
+            }
+            
+        }
+
     }
 }
