@@ -1,35 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
+
 namespace SnakeTheGame
 {
     class Snake
     {
-        int positionX, positionY, length, direction;
+        int headPositionX, headPositionY, length, direction;
+
+        List<Point> snake = new List<Point>();
 
         public Snake(int x, int y, int length, int direction)
         {
-            this.positionX = x;
-            this.positionY = y;
+            this.headPositionX = x;
+            this.headPositionY = y;
             this.length = length;
             this.direction = direction;
+            // First snake
+            for (int i = 0; i < this.length; i++)
+            {
+                snake.Add(new Point(this.headPositionX - i, this.headPositionY));
+            }
         }
 
         public void MoveSnake()
         {
-
         }
         public void AddToSnake(int points)
         {
-            this.length += points;
+            for (int i = 0; i < points; i++) {
+            }    
         }
         public bool DetectCollision()
         {
             return false;
         }
 
-        public void DrawSnake()
+        public void DrawSnake(Level level)
         {
-
+            foreach(Point point in snake)
+            {
+            }
         }
     }
     class Level
@@ -53,6 +65,8 @@ namespace SnakeTheGame
             }
             Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
         }
+
+
     }
    
     internal class Program
@@ -62,10 +76,11 @@ namespace SnakeTheGame
             Console.WriteLine("Welcome to Snake!");
             Level Level1 = new Level(40, 20); // Skapar en ny level
             Level1.DrawLevel(); // Ritar ut level
+            
             // Spela spelet från nivå 1 här..
             MainMenu();
         }
-        // Anders kan pusha!
+
         private static void MainMenu()
         {
             bool continueMenu = true;
