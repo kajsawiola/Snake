@@ -88,10 +88,12 @@ namespace SnakeTheGame
                         Console.Write(f.Symbol);
                     }
                 }
-
+                
                 Console.WriteLine('|');
             }
+            
             Console.WriteLine(new String('-', Width + 2)); // Ritar nedersta raden
+            
         }
         public static Level EasyLevel()
         {
@@ -112,7 +114,7 @@ namespace SnakeTheGame
             };
             List<Snake> snakes = new List<Snake>()
             {
-                new Snake(1,1,1,1,'@')
+                new Snake(1,1,3,1,'@')
             };
 
             foreach (Fruit f in fruits)
@@ -336,7 +338,7 @@ namespace SnakeTheGame
 
                 if (command == "Play from start" || command == "1")
                 {
-                    
+                    //NYI Gör samma som quit option.
                     continuePauseMenu = false;
                     isGameOver = true;
                 }
@@ -357,10 +359,10 @@ namespace SnakeTheGame
                         
                             if (command == "yes")
                             {
-                            MainMenu();
+                            //MainMenu();
                             continueYesNoOption = false;
                             continuePauseMenu = false;
-                            isGameOver = false;
+                            isGameOver = true;
 
                             }
                             else if (command == "no")
@@ -475,39 +477,56 @@ namespace SnakeTheGame
         private static void PlayGame(int speed, int difficulty)
         {   
             bool isGameOver = false;
+            int drawCounter = 0; //Tänkt att användas för testning.
+            int drawSpeed;
 
+            //Set game speed:
+            if (speed == 1)
+                drawSpeed = 750;
+            else if (speed == 2)
+                drawSpeed= 500;
+            else if (speed == 3)
+                drawSpeed= 250;
+            else
+                drawSpeed = 750;
 
-            //NYI: Set game speed and difficulty here
-            //NYI: LoadLevel() or InitLevel()
-            if (speed == 1 && difficulty == 1)
+            Level currentLevel;
+
+            if (difficulty == 1)
             {
-                Level easy = Level.EasyLevel();
-                easy.DrawLevel();
+
+                currentLevel = Level.EasyLevel();
+                currentLevel.DrawLevel();
                 
             }
-            if (speed == 2 && difficulty == 2)
+            else if (difficulty == 2)
             {
-                Level medium = Level.MediumLevel();
-                medium.DrawLevel();
+                currentLevel = Level.MediumLevel();
+                currentLevel.DrawLevel();
             }
-            if (speed == 3 && difficulty == 3)
+            else if (difficulty == 3)
             {
-                Level Hard = Level.HardLevel();
-                Hard.DrawLevel();
+                currentLevel = Level.HardLevel();
+                currentLevel.DrawLevel();
             }
-            //NYI Start a timer
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            else
+            {
+                currentLevel = Level.EasyLevel();
+                currentLevel.DrawLevel();
+            }
+
+            Stopwatch drawTimer = new Stopwatch();
+            drawTimer.Start();
 
             while (!isGameOver)
             {
-                // Check if 500 milliseconds have passed
-                if (stopwatch.ElapsedMilliseconds >= 500)
+                // Updates level when drawSpeed has passed.
+                if (drawTimer.ElapsedMilliseconds >= drawSpeed)
                 {
-                    Console.WriteLine("500 milliseconds have passed");
-                    //UpdateLevel(); / DrawLevel();
+                    Console.WriteLine($"Redraw as {drawSpeed}ms has passed");
+                    //currentLevel.DrawLevel(); Avkommentera för hokus pokus
 
-                    stopwatch.Restart();
+                    drawTimer.Restart();
                 }
 
                 if (Console.KeyAvailable)
@@ -517,39 +536,39 @@ namespace SnakeTheGame
                     if (keyPressed.Key == ConsoleKey.LeftArrow)
                     {
                         //NYI: keyPressed LeftArrow
-                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine(drawTimer.ElapsedMilliseconds);
                         Console.WriteLine("LeftArrow");
                     }
 
                     else if (keyPressed.Key == ConsoleKey.RightArrow)
                     {
                         //NYI: keyPressed RightArrow
-                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine(drawTimer.ElapsedMilliseconds);
                         Console.WriteLine("RightArrow");
                     }
 
                     else if (keyPressed.Key == ConsoleKey.UpArrow)
                     {
                         //NYI: keyPressed UpArrow
-                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine(drawTimer.ElapsedMilliseconds);
                         Console.WriteLine("UpArrow");
                     }
 
                     else if (keyPressed.Key == ConsoleKey.DownArrow)
                     {
                         //NYI: keyPressed DownArrow
-                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine(drawTimer.ElapsedMilliseconds);
                         Console.WriteLine("DownArrow");
                     }
 
                     else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
                     {
-                        stopwatch.Stop();
+                        drawTimer.Stop();
                         
-                        Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                        Console.WriteLine(drawTimer.ElapsedMilliseconds);
                         Console.WriteLine("Paus");
                         isGameOver = PauseMenu(); //Return value från pause menu beror på om man valt att fortsätta spelet eller inte.
-                        stopwatch.Restart(); // Få in denna under continue i metoden PauseMenu ?? 
+                        drawTimer.Restart(); // Få in denna under continue i metoden PauseMenu ?? 
 
                     }
 
