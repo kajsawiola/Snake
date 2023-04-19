@@ -65,7 +65,7 @@ namespace SnakeTheGame
         }
         public void DrawLevel() // Ritar ut level
         {
-            //Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
+            Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
 
             for (int i = 0; i < Height; i++) // Ritar mellanslag med | på varsin sida
             {
