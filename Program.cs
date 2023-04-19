@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using System.Drawing;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 namespace SnakeTheGame
@@ -43,6 +44,7 @@ namespace SnakeTheGame
         {
             foreach(Point point in snake)
             {
+
             }
         }
     }
@@ -50,10 +52,12 @@ namespace SnakeTheGame
     {
         public int Width { get; }
         public int Height { get; }
-        public Level(int width, int height)
+        public List<Obstacle> Obstacles { get; }
+        public Level(int width, int height, List<Obstacle> obstacles)
         {
             Width = width;
             Height = height;
+            Obstacles = obstacles;
         }
         public void DrawLevel() // Ritar ut level
         {
@@ -69,17 +73,40 @@ namespace SnakeTheGame
         }
         public static Level EasyLevel()
         {
-            return new Level(60, 30);
+            return new Level(60, 30, new List<Obstacle>
+            {
+                new Obstacle('-'),
+                new Obstacle('|')
+            });
         }
         public static Level MediumLevel()
         {
-            return new Level(40, 20);
+            return new Level(40, 20, new List<Obstacle>
+            { 
+                new Obstacle('-'),
+                new Obstacle('|')
+            });
         }
         public static Level HardLevel()
         {
-            return new Level(30, 10);
+            return new Level(30, 10, new List<Obstacle>
+            {
+                new Obstacle('-'),
+                new Obstacle('|')
+            });
         }
     }
+    class Obstacle
+    {
+        public char Symbol { get; }
+        public Obstacle(char symbol) 
+        {
+            Symbol = symbol;
+        }
+    }
+    /// <summary>
+    /// Symbol för vilken char som är ett hinder
+    /// </summary>
    
     internal class Program
     {
