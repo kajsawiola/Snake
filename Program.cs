@@ -52,7 +52,7 @@ namespace SnakeTheGame
     }
     class Level
     {
-        public int Width { get; }
+        public int Width { get; set; }
         public int Height { get; }
         public List<Obstacle> Obstacles { get; }
         public List<Fruit> FruitList { get; }
@@ -65,20 +65,21 @@ namespace SnakeTheGame
         }
         public void DrawLevel() // Ritar ut level
         {
-            Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
+            //Console.WriteLine(new String('-', Width + 2)); // Ritar översta raden
 
             for (int i = 0; i < Height; i++) // Ritar mellanslag med | på varsin sida
             {
                 Console.Write('|');
                 Console.Write(new String(' ', Width));
                 
-                Random random = new Random();   
+                Random random = new Random();
+                
                 foreach (Fruit f in FruitList) 
                 {
                     
                     {
-                        f.X = random.Next(1, Console.WindowWidth - 1);
-                        f.Y = random.Next(1, Console.WindowHeight - 1);
+                        f.X = random.Next(1, Width - 1);
+                        f.Y = random.Next(1, Height - 1);
                         Console.SetCursorPosition(f.X + 1, i + 1);
                         Console.ForegroundColor = f.Color;
                         Console.Write(f.Symbol);
@@ -92,6 +93,8 @@ namespace SnakeTheGame
         public static Level EasyLevel()
         {
             Random random = new Random();
+            int levelWidth = 60; //Behövs dessa?
+            int levelHeight = 30;
             List<Fruit> fruits = new List<Fruit>
     {
         new Fruit(0, 0, ConsoleColor.Red, '*', 1),
@@ -107,8 +110,8 @@ namespace SnakeTheGame
 
             foreach (Fruit f in fruits)
             {
-                f.X = random.Next(1, 60);
-                f.Y = random.Next(1, 30);
+                f.X = random.Next(1, levelWidth -1);
+                f.Y = random.Next(1, levelHeight -1);
             }
 
             return new Level(60, 30, obstacles, fruits);
@@ -141,8 +144,8 @@ namespace SnakeTheGame
 
             foreach (Fruit f in fruits)
             {
-                f.X = random.Next(1, 60);
-                f.Y = random.Next(1, 30);
+                f.X = random.Next(1, 40);
+                f.Y = random.Next(1, 20);
             }
 
             return new Level(60, 30, obstacles, fruits);
@@ -173,8 +176,8 @@ namespace SnakeTheGame
 
             foreach (Fruit f in fruits)
             {
-                f.X = random.Next(1, 60);
-                f.Y = random.Next(1, 30);
+                f.X = random.Next(1, 30);
+                f.Y = random.Next(1, 10);
             }
 
             return new Level(60, 30, obstacles, fruits);
