@@ -128,7 +128,26 @@ namespace SnakeTheGame
             Points = points;
         }
     }
-   
+
+    
+    class Godis
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public ConsoleColor Color { get; set; }
+        public string Symbol { get; set; }
+        public int Points { get; set; }
+
+        public Godis(int x, int y, ConsoleColor color, string symbol, int points)
+        {
+            X = x;
+            Y = y;
+            Color = color;
+            Symbol = symbol;
+            Points = points;
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
