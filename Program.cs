@@ -153,12 +153,6 @@ namespace SnakeTheGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake!");
-            Level easy = Level.EasyLevel();
-            easy.DrawLevel();
-            Level medium = Level.MediumLevel();
-            medium.DrawLevel();
-            Level hard = Level.HardLevel();
-            hard.DrawLevel();
             // Spela spelet från nivå 1 här..
             MainMenu();
         }
@@ -239,7 +233,7 @@ namespace SnakeTheGame
                         
                             if (command == "yes")
                             {
-                            //MainMenu();
+                            MainMenu();
                             continueYesNoOption = false;
                             continuePauseMenu = false;
                             isGameOver = false;
@@ -361,7 +355,21 @@ namespace SnakeTheGame
 
             //NYI: Set game speed and difficulty here
             //NYI: LoadLevel() or InitLevel()
-
+            if (speed == 1 && difficulty == 1)
+            {
+                Level easy = Level.EasyLevel();
+                easy.DrawLevel();
+            }
+            if (speed == 2 && difficulty == 2)
+            {
+                Level medium = Level.MediumLevel();
+                medium.DrawLevel();
+            }
+            if (speed == 3 && difficulty == 3)
+            {
+                Level Hard = Level.HardLevel();
+                Hard.DrawLevel();
+            }
             //NYI Start a timer
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
