@@ -10,13 +10,13 @@ using System.Security.Cryptography;
 namespace SnakeTheGame
 {
     class Snake
-        // star test
     {
         int headPositionX, headPositionY, length, direction;
+        char SnakeSymbol;
 
         List<Point> snake = new List<Point>();
 
-        public Snake(int x, int y, int length, int direction)
+        public Snake(int x, int y, int length, int direction, char snakeSymbol)
         {
             this.headPositionX = x;
             this.headPositionY = y;
@@ -27,6 +27,7 @@ namespace SnakeTheGame
             {
                 snake.Add(new Point(this.headPositionX - i, this.headPositionY));
             }
+            SnakeSymbol = snakeSymbol;
         }
 
         public void MoveSnake()
@@ -56,12 +57,14 @@ namespace SnakeTheGame
         public int Height { get; }
         public List<Obstacle> Obstacles { get; }
         public List<Fruit> FruitList { get; }
-        public Level(int width, int height, List<Obstacle> obstacles, List<Fruit> fruitList)
+        public List<Snake> Snakes { get; }
+        public Level(int width, int height, List<Obstacle> obstacles, List<Fruit> fruitList, List<Snake> snakes)
         {
             Width = width;
             Height = height;
             Obstacles = obstacles;
             FruitList = fruitList;
+            Snakes = snakes;
         }
         public void DrawLevel() // Ritar ut level
         {
@@ -76,7 +79,7 @@ namespace SnakeTheGame
                 
                 foreach (Fruit f in FruitList) 
                 {
-                    
+
                     {
                         f.X = random.Next(1, Width - 1);
                         f.Y = random.Next(1, Height - 1);
@@ -96,17 +99,21 @@ namespace SnakeTheGame
             int levelWidth = 60; //Behövs dessa?
             int levelHeight = 30;
             List<Fruit> fruits = new List<Fruit>
-    {
-        new Fruit(0, 0, ConsoleColor.Red, '*', 1),
-        new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
-        new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
-    };
+            {
+                 new Fruit(0, 0, ConsoleColor.Red, '*', 1),
+                 new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
+                 new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
+            };
 
             List<Obstacle> obstacles = new List<Obstacle>
-    {
-        new Obstacle('-'),
-        new Obstacle('|')
-    };
+            {
+                new Obstacle('-'),
+                new Obstacle('|')
+            };
+            List<Snake> snakes = new List<Snake>()
+            {
+                new Snake(1,1,1,1,'@')
+            };
 
             foreach (Fruit f in fruits)
             {
@@ -114,7 +121,7 @@ namespace SnakeTheGame
                 f.Y = random.Next(1, levelHeight -1);
             }
 
-            return new Level(60, 30, obstacles, fruits);
+            return new Level(60, 30, obstacles, fruits, snakes);
         }
         /*public static Level EasyLevel()
         {
@@ -130,17 +137,21 @@ namespace SnakeTheGame
         {
             Random random = new Random();
             List<Fruit> fruits = new List<Fruit>
-    {
-        new Fruit(0, 0, ConsoleColor.Red, '*', 1),
-        new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
-        new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
-    };
+            {
+                 new Fruit(0, 0, ConsoleColor.Red, '*', 1),
+                 new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
+                 new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
+            };
 
             List<Obstacle> obstacles = new List<Obstacle>
-    {
-        new Obstacle('-'),
-        new Obstacle('|')
-    };
+            {
+                new Obstacle('-'),
+                new Obstacle('|')
+            };
+            List<Snake> snakes = new List<Snake>()
+            {
+                new Snake(1,1,1,1,'@')
+            };
 
             foreach (Fruit f in fruits)
             {
@@ -148,7 +159,7 @@ namespace SnakeTheGame
                 f.Y = random.Next(1, 20);
             }
 
-            return new Level(60, 30, obstacles, fruits);
+            return new Level(40, 20, obstacles, fruits, snakes);
         }
         /*{
         return new Level(40, 20, new List<Obstacle>
@@ -157,22 +168,26 @@ namespace SnakeTheGame
             new Obstacle('|')
             // NYI: "new Obstacle(ormens 'char')" Vilket ska göra att det blir game over om man kör in i sig själv
         });
-    }*/
+        }*/
         public static Level HardLevel()
         {
             Random random = new Random();
             List<Fruit> fruits = new List<Fruit>
-    {
-        new Fruit(0, 0, ConsoleColor.Red, '*', 1),
-        new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
-        new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
-    };
+            {
+                 new Fruit(0, 0, ConsoleColor.Red, '*', 1),
+                 new Fruit(0, 0, ConsoleColor.Yellow, 'C', 2),
+                 new Fruit(0, 0, ConsoleColor.Green, 'O', 3)
+            };
 
             List<Obstacle> obstacles = new List<Obstacle>
-    {
-        new Obstacle('-'),
-        new Obstacle('|')
-    };
+            {
+                new Obstacle('-'),
+                new Obstacle('|')
+            };
+            List<Snake> snakes = new List<Snake>()
+            {
+                new Snake(1,1,1,1,'@')
+            };
 
             foreach (Fruit f in fruits)
             {
@@ -180,7 +195,7 @@ namespace SnakeTheGame
                 f.Y = random.Next(1, 10);
             }
 
-            return new Level(60, 30, obstacles, fruits);
+            return new Level(30, 10, obstacles, fruits, snakes);
         }
         /* {
         return new Level(30, 10, new List<Obstacle>
