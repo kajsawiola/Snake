@@ -86,6 +86,7 @@ namespace SnakeTheGame
             { 
                 new Obstacle('-'),
                 new Obstacle('|')
+                // NYI: "new Obstacle(ormens 'char')" Vilket ska göra att det blir game over om man kör in i sig själv
             });
         }
         public static Level HardLevel()
