@@ -205,48 +205,59 @@ namespace SnakeTheGame
             Console.WriteLine("3.Quit\n");
         }
 
-        private static void PauseMenu()
-        { bool continueMenu = true;
-        string command;
-            while (continueMenu)
+        private static bool PauseMenu()
+        {   
+            bool isGameOver = false;
+            bool continuePauseMenu = true;
+            string command;
+
+            while (continuePauseMenu)
             {
                 PrintPauseMenu();
                 command = GetUserInput("Menu choice: ");
 
                 if (command == "Play from start" || command == "1")
                 {
-                    MainMenu();
-                    continueMenu = false;
+                    
+                    continuePauseMenu = false;
+                    isGameOver = true;
                 }
 
                 else if (command == "Continue game" || command == "2")
                 {
                     //NYI: fortsätter spelet där man pausade
+                    continuePauseMenu = false;
+                    isGameOver = false;
                 }
                 else if (command == "Quit game" || command == "3")
                 {
-
-                    while (continueMenu)
+                    bool continueYesNoOption = true;
+                    while (continueYesNoOption)
                     {
-                        Console.WriteLine("The game is over, do you want to start a new one? ");
+                        Console.WriteLine("Are you sure you want to quit to main menu? Progress will be lost. ");
                         command = GetUserInput("Type 'yes' or 'no': ");
                         
                             if (command == "yes")
                             {
-                                MainMenu();
-                                continueMenu = false;
+                            //MainMenu();
+                            continueYesNoOption = false;
+                            continuePauseMenu = false;
+                            isGameOver = false;
+
                             }
                             else if (command == "no")
                             {
-                                Console.WriteLine("Have a nice day!");
-                                continueMenu = false;
+                                Console.WriteLine("Returning to pause menu.");
+                                continueYesNoOption = false;
                             }
                             else
                                 Console.WriteLine("Unknown command!");                       
                     }
                 }
-                else Console.WriteLine("Unknown command!");
+                else 
+                    Console.WriteLine("Unknown command!");
             }
+            return isGameOver;
         }
         private static void PrintPauseMenu()
         {
@@ -404,7 +415,7 @@ namespace SnakeTheGame
                         
                         Console.WriteLine(stopwatch.ElapsedMilliseconds);
                         Console.WriteLine("Paus");
-                        // NYI: PauseMenu();
+                        isGameOver = PauseMenu(); //Return value från pause menu beror på om man valt att fortsätta spelet eller inte.
                         stopwatch.Restart(); // Få in denna under continue i metoden PauseMenu ?? 
 
                     }
