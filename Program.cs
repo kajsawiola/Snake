@@ -80,6 +80,24 @@ namespace SnakeTheGame
             return new Level(30, 10);
         }
     }
+
+    class Fruit
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public ConsoleColor Color { get; set; } 
+        public string Symbol { get; set; }
+        public int Points { get; set; }
+
+        public Fruit (int x, int y, ConsoleColor color, string symbol, int points)
+        {
+            X = x;
+            Y = y;
+            Color = color;
+            Symbol = symbol;
+            Points = points;
+        }
+    }
    
     internal class Program
     {
@@ -275,6 +293,7 @@ namespace SnakeTheGame
             return difficulty;
         }
 
+        
         private static void PlayGame(int speed, int difficulty)
         {   
             bool isGameOver = false;
@@ -333,10 +352,12 @@ namespace SnakeTheGame
                     else if (keyPressed.Key == ConsoleKey.Escape || keyPressed.Key == ConsoleKey.Spacebar)
                     {
                         stopwatch.Stop();
-                        //NYI:Paus();
+                        
                         Console.WriteLine(stopwatch.ElapsedMilliseconds);
                         Console.WriteLine("Paus");
-                        stopwatch.Restart();
+                        // NYI: PauseMenu();
+                        stopwatch.Restart(); // Få in denna under continue i metoden PauseMenu ?? 
+
                     }
 
 
