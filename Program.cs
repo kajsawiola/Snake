@@ -116,10 +116,10 @@ namespace SnakeTheGame
         public int X { get; set; }
         public int Y { get; set; }
         public ConsoleColor Color { get; set; } 
-        public string Symbol { get; set; }
+        public char Symbol { get; set; }
         public int Points { get; set; }
 
-        public Fruit (int x, int y, ConsoleColor color, string symbol, int points)
+        public Fruit (int x, int y, ConsoleColor color, char symbol, int points)
         {
             X = x;
             Y = y;
@@ -135,10 +135,10 @@ namespace SnakeTheGame
         public int X { get; set; }
         public int Y { get; set; }
         public ConsoleColor Color { get; set; }
-        public string Symbol { get; set; }
+        public char Symbol { get; set; }
         public int Points { get; set; }
 
-        public Godis(int x, int y, ConsoleColor color, string symbol, int points)
+        public Godis(int x, int y, ConsoleColor color, char symbol, int points)
         {
             X = x;
             Y = y;
