@@ -490,42 +490,33 @@ namespace SnakeTheGame
             else
                 drawSpeed = 750;
 
+            //Create Level
             Level currentLevel;
 
             if (difficulty == 1)
-            {
-
                 currentLevel = Level.EasyLevel();
-                currentLevel.DrawLevel();
-                
-            }
             else if (difficulty == 2)
-            {
                 currentLevel = Level.MediumLevel();
-                currentLevel.DrawLevel();
-            }
             else if (difficulty == 3)
-            {
                 currentLevel = Level.HardLevel();
-                currentLevel.DrawLevel();
-            }
             else
-            {
                 currentLevel = Level.EasyLevel();
-                currentLevel.DrawLevel();
-            }
+
+
+            currentLevel.DrawLevel();
 
             Stopwatch drawTimer = new Stopwatch();
             drawTimer.Start();
+            drawCounter++;
 
             while (!isGameOver)
             {
-                // Updates level when drawSpeed has passed.
+                // Updates level when assigned drawSpeed has passed.
                 if (drawTimer.ElapsedMilliseconds >= drawSpeed)
                 {
-                    Console.WriteLine($"Redraw as {drawSpeed}ms has passed");
+                    Console.WriteLine($"Redraw as {drawSpeed}ms has passed. DrawCount: {drawCounter}");
                     //currentLevel.DrawLevel(); Avkommentera för hokus pokus
-
+                    drawCounter++;
                     drawTimer.Restart();
                 }
 

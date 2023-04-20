@@ -31,3 +31,5 @@
 /obj/Debug/net6.0/apphost.exe
 /obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
 /obj/Debug/net6.0/ref/SnakeTheGame.dll
+/obj/Debug/net6.0/SnakeTheGame.GeneratedMSBuildEditorConfig.editorconfig
+/obj/Debug/net6.0/SnakeTheGame.assets.cache
