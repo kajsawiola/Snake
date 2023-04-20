@@ -97,6 +97,7 @@ namespace SnakeTheGame
         }
         public static Level EasyLevel()
         {
+            Console.Clear();
             Random random = new Random();
             int levelWidth = 60; //Behövs dessa?
             int levelHeight = 30;
